@@ -73,7 +73,7 @@ export function ProjectForm(props: ProjectFormProps) {
                 name="companyName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Name</FormLabel>
+                    <FormLabel>Company Name *</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g. Acme Inc." {...field} />
                     </FormControl>
@@ -87,7 +87,7 @@ export function ProjectForm(props: ProjectFormProps) {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Name</FormLabel>
+                    <FormLabel>Project Name *</FormLabel>
                     <FormControl>
                       <Input placeholder="e.g. Customer Portal" {...field} />
                     </FormControl>
@@ -102,7 +102,7 @@ export function ProjectForm(props: ProjectFormProps) {
               name="shortDescription"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Short Description</FormLabel>
+                  <FormLabel>Short Description *</FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
@@ -139,7 +139,7 @@ export function ProjectForm(props: ProjectFormProps) {
                 name="startDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Start date</FormLabel>
+                    <FormLabel>Start date *</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -181,7 +181,7 @@ export function ProjectForm(props: ProjectFormProps) {
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="flex items-center justify-between">
-                      End date
+                      End date *
                       <div className="flex items-center space-x-2">
                         <Checkbox
                           id="currentlyWorking"
