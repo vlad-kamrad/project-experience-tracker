@@ -37,7 +37,7 @@ export function EnterDataTab() {
         value={currentTab}
         onValueChange={value => setCurrentTab(value as TabValue)}
       >
-        <TabsList className="grid w-full grid-cols-2 max-w-md">
+        <TabsList className="flex flex-wrap h-auto space-y-1">
           <TabsTrigger value="project">Add Project</TabsTrigger>
           <TabsTrigger value="technology">Add Technology</TabsTrigger>
         </TabsList>
