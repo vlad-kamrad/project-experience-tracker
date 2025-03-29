@@ -1,5 +1,8 @@
-import { useState, useMemo } from "react";
-import { differenceInMonths, differenceInDays } from "date-fns";
+import { differenceInDays, differenceInMonths } from "date-fns";
+import { useMemo, useState } from "react";
+import { formatExperienceInMonths } from "~/lib/formatters";
+import { useStore } from "~/shared/store";
+import { Badge } from "~/shared/ui/badge";
 import {
   Card,
   CardContent,
@@ -7,7 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "~/shared/ui/card";
-import { Badge } from "~/shared/ui/badge";
+import { ColorBadge } from "~/shared/ui/color-badge";
+import { Label } from "~/shared/ui/label";
 import {
   Select,
   SelectContent,
@@ -15,10 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/shared/ui/select";
-import { Label } from "~/shared/ui/label";
 import { Slider } from "~/shared/ui/slider";
-import { useStore } from "~/shared/store";
-import { formatExperienceInMonths } from "~/lib/formatters";
 
 export function TechStackPreviewTab() {
   const projects = useStore(store => store.projects);
@@ -172,7 +173,7 @@ export function TechStackPreviewTab() {
                         <div className="flex flex-wrap justify-between items-start gap-2 mb-2">
                           <div>
                             <h3 className="font-medium">{tech.name}</h3>
-                            <Badge variant="outline">{tech.category}</Badge>
+                            <ColorBadge name={tech.category} />
                           </div>
                           <Badge variant="secondary">
                             {formatExperienceInMonths(experience.totalMonths)}

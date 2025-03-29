@@ -18,7 +18,7 @@ export function Application() {
         </div>
 
         <Tabs defaultValue="enter-data" className="w-full">
-          <TabsList className="flex flex-wrap w-full mb-4 h-auto space-y-1">
+          <TabsList className="flex flex-wrap w-full mb-4 h-auto">
             <TabsTrigger value="enter-data">Enter Data</TabsTrigger>
 
             <TabsTrigger value="experience-preview">

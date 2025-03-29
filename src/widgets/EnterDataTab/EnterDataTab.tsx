@@ -6,7 +6,6 @@ import { DeleteTechnologyButton } from "~/features/delete-technology";
 import { UpdateProjectButton } from "~/features/update-project";
 import { UpdateTechnologyButton } from "~/features/update-technology";
 import { useStore } from "~/shared/store";
-import { Badge } from "~/shared/ui/badge";
 import {
   Card,
   CardContent,
@@ -14,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/shared/ui/card";
+import { ColorBadge } from "~/shared/ui/color-badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/shared/ui/tabs";
 
 type TabValue = "project" | "technology";
@@ -100,7 +100,7 @@ export function EnterDataTab() {
                   >
                     <div>
                       <p className="font-medium">{tech.name}</p>
-                      <Badge variant="outline">{tech.category}</Badge>
+                      <ColorBadge name={tech.category} />
                     </div>
 
                     <div className="flex gap-1">

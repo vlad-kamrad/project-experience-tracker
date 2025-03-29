@@ -1,5 +1,6 @@
 import { UseFormReturn } from "react-hook-form";
 import { categories } from "~/shared/consts";
+import { ColorBadge } from "~/shared/ui/color-badge";
 import {
   Form,
   FormControl,
@@ -25,6 +26,8 @@ interface TechnologyFormProps {
 export function TechnologyForm(props: TechnologyFormProps) {
   const { form } = props;
 
+  const name = form.watch("name");
+
   return (
     <Form {...form}>
       <form className="space-y-6 flex flex-col">
@@ -33,7 +36,9 @@ export function TechnologyForm(props: TechnologyFormProps) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Technology Name</FormLabel>
+              <FormLabel>
+                Technology Name {name && <ColorBadge name={name} />}
+              </FormLabel>
               <FormControl>
                 <Input placeholder="React, Node.js, Docker, etc." {...field} />
               </FormControl>

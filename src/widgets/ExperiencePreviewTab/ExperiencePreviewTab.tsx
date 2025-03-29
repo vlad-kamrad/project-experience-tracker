@@ -4,7 +4,6 @@ import { useState } from "react";
 import { formatDuration } from "~/lib/formatters";
 import { groupBy } from "~/lib/utils";
 import { useStore } from "~/shared/store";
-import { Badge } from "~/shared/ui/badge";
 import {
   Card,
   CardContent,
@@ -12,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/shared/ui/card";
+import { ColorBadge } from "~/shared/ui/color-badge";
 
 export function ExperiencePreviewTab() {
   const projects = useStore(store => store.projects);
@@ -97,9 +97,10 @@ export function ExperiencePreviewTab() {
                                   </p>
                                   <div className="flex flex-wrap gap-1 mt-1">
                                     {project.technologyIds.map(techId => (
-                                      <Badge key={techId} variant="secondary">
-                                        {getTechnologyName(techId)}
-                                      </Badge>
+                                      <ColorBadge
+                                        key={techId}
+                                        name={getTechnologyName(techId)}
+                                      />
                                     ))}
                                   </div>
                                 </div>
