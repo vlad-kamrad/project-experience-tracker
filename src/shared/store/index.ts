@@ -40,7 +40,14 @@ type Actions = {
 
   deleteProject: (id: Project["id"]) => void;
 
-  addTechnology: (technology: Omit<Technology, "id">) => void;
+  getTechnology: (technologyId: Technology["id"]) => Technology | undefined;
+
+  createTechnology: (technology: Omit<Technology, "id">) => void;
+
+  updateTechnology: (
+    technologyId: Technology["id"],
+    technology: Partial<Omit<Technology, "id">>
+  ) => void;
 
   deleteTechnology: (id: Technology["id"]) => void;
 
@@ -87,9 +94,29 @@ export const useStore = create<State & Actions>()(
         });
       },
 
-      addTechnology: (technology: Omit<Technology, "id">) => {
+      getTechnology: (technologyId: Technology["id"]) =>
+        get().technologies.find(technology => technology.id === technologyId),
+
+      createTechnology: (technology: Omit<Technology, "id">) => {
         set(state => {
           state.technologies.push({ id: getRandomUuid(), ...technology });
+        });
+      },
+
+      updateTechnology: (
+        technologyId: Technology["id"],
+        updatedTechnology: Partial<Omit<Technology, "id">>
+      ) => {
+        set(state => {
+          const technology = state.technologies.find(
+            item => item.id === technologyId
+          );
+
+          if (!technology) {
+            throw new Error("Technology is not found");
+          }
+
+          Object.assign(technology, updatedTechnology);
         });
       },
 

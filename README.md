@@ -60,7 +60,7 @@ This application is a personal project experience tracker that allows users to a
 
 ## Future Improvements
 
-- [ ] Edit created projects/techonogies.
+- [x] Edit created projects/techonogies.
 - [ ] Include more advanced filters for projects and technologies.
 - [ ] Provide intergation using the iframe tag.
 
