@@ -1,4 +1,4 @@
-import { stringToColor } from "~/lib/colors";
+import { stringToHslColor } from "~/lib/colors";
 import { Badge } from "./badge";
 
 interface ColorBadgeProps {
@@ -8,7 +8,7 @@ interface ColorBadgeProps {
 export function ColorBadge(props: ColorBadgeProps) {
   const { name } = props;
 
-  const color = stringToColor(name);
+  const color = stringToHslColor(name);
 
   return (
     <Badge variant="secondary" style={{ backgroundColor: color }}>
