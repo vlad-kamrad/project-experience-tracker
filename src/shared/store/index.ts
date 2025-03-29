@@ -29,7 +29,9 @@ type State = {
 };
 
 type Actions = {
-  addProject: (project: Omit<Project, "id">) => void;
+  getProject: (projectId: Project["id"]) => Project | undefined;
+
+  createProject: (project: Omit<Project, "id">) => void;
 
   updateProject: (
     projectId: Project["id"],
@@ -47,12 +49,16 @@ type Actions = {
 
 export const useStore = create<State & Actions>()(
   persist(
-    immer(set => ({
+    immer((set, get) => ({
       projects: [],
 
       technologies: [],
 
-      addProject: (project: Omit<Project, "id">) => {
+      getProject: (projectId: Project["id"]) => {
+        return get().projects.find(project => project.id === projectId);
+      },
+
+      createProject: (project: Omit<Project, "id">) => {
         set(state => {
           state.projects.push({ id: getRandomUuid(), ...project });
         });

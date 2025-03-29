@@ -1,7 +1,9 @@
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
-import { ProjectForm, useProjectForm } from "~/entities/project";
 import { TechnologyForm, useTechnologyForm } from "~/entities/technology";
+import { CreateProjectForm } from "~/features/create-project";
+import { DeleteProjectButton } from "~/features/delete-project";
+import { UpdateProjectButton } from "~/features/update-project";
 import { useStore } from "~/shared/store";
 import { Badge } from "~/shared/ui/badge";
 import { Button } from "~/shared/ui/button";
@@ -20,14 +22,10 @@ export function EnterDataTab() {
   const projects = useStore(store => store.projects);
   const technologies = useStore(store => store.technologies);
 
-  const addProject = useStore(store => store.addProject);
   const addTechnology = useStore(store => store.addTechnology);
-  const deleteProject = useStore(store => store.deleteProject);
   const deleteTechnology = useStore(store => store.deleteTechnology);
 
   const [currentTab, setCurrentTab] = useState<TabValue>("project");
-
-  const projectForm = useProjectForm();
   const technologyForm = useTechnologyForm();
 
   return (
@@ -43,11 +41,7 @@ export function EnterDataTab() {
         </TabsList>
 
         <TabsContent value="project" className="mt-6">
-          <ProjectForm
-            technologies={technologies}
-            form={projectForm}
-            onSubmit={addProject}
-          />
+          <CreateProjectForm />
         </TabsContent>
 
         <TabsContent value="technology" className="mt-6">
@@ -80,13 +74,10 @@ export function EnterDataTab() {
                       </p>
                     </div>
 
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => deleteProject(project.id)}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+                    <div className="flex gap-1">
+                      <UpdateProjectButton projectId={project.id} />
+                      <DeleteProjectButton projectId={project.id} />
+                    </div>
                   </li>
                 ))}
               </ul>
